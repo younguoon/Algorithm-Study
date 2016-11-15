@@ -28,3 +28,4 @@ public class D1120_N1325_SecureTest {
 		System.out.println("입력한 두 숫자 N : " + n + " M : "+ m);
 	}
 }
+ 
