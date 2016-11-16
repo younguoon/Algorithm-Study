@@ -19,12 +19,11 @@ public class D1120_N1325_SecureTest {
 	public static void main(String[] args) {
 		
 		int n, m;
-		Scanner sc1 = new Scanner(System.in);
-		Scanner sc2 = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("두 숫자 N과 M을 입력하세요 ");
-		n = sc1.nextInt();
-		m = sc2.nextInt();
+		n = sc.nextInt();
+		m = sc.nextInt();
 		System.out.println("입력한 두 숫자 N : " + n + " M : "+ m);
 	}
 }
