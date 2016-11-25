@@ -30,7 +30,7 @@
 INF
 */
 
-package backjoon;
+package com.junit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,7 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class D1127_N1753_ShortestPath
+
+public class D1127_N1110_SumCycle
 {
 	//한계
 	public static final int INFINITE = 3000000;
@@ -48,54 +49,39 @@ public class D1127_N1753_ShortestPath
 
 	private int v, e, k;
 
-	public D1127_N1753_ShortestPath()
+	public D1127_N1110_SumCycle()
 	{
 		try
-		{ 
+		{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 			String[] temps = reader.readLine().split(" ");
 			v = Integer.parseInt(temps[0]);
-//			System.out.println("v값 입력완료");
 			e = Integer.parseInt(temps[1]);
-//			System.out.println("e값 입력완료");
 			//왜 -1을 했을까??
 			k = Integer.parseInt(reader.readLine()) - 1;
-			
-//			System.out.println("k값까지 입력 완료");
-			
-//			System.out.println("for문 시작");
+
 			List<List<Edge>> adjacencyList = new ArrayList<>();
 			for(int i = 0; i < v; i++)
 			{
-//				System.out.println("List<List<Edge>> for문으로 입력받음");
 				List<Edge> edges = new ArrayList<>();
 				adjacencyList.add(edges);
-//				System.out.println("adjacencyList : " + adjacencyList );
-//				System.out.println("edges : " + edges);
 			}
-//			System.out.println("for문 종료");
-			
-			
+
 			for(int i = 0; i < e; i++)
 			{
 				temps = reader.readLine().split(" ");
 				int from = Integer.parseInt(temps[0]) - 1;
-//				System.out.println("from : " + from);
 				int to = Integer.parseInt(temps[1]) - 1;
-//				System.out.println("to : "+to);
 				int weight = Integer.parseInt(temps[2]);
-//				System.out.println("weight : "+weight);
+
 				adjacencyList.get(from).add(new Edge(from, to, weight));
-//				System.out.println("adjacencyList"+adjacencyList);
 			}
 			reader.close();
 
 			int[] result = dikstra(adjacencyList, k);
-//			System.out.println("result" + result);
 			for(int i = 0; i < v; i++)
 			{
-//				System.out.println(result[i]);
 				if(result[i] != INFINITE)
 				{
 					System.out.println(result[i]);
@@ -132,8 +118,6 @@ public class D1127_N1753_ShortestPath
 			Edge pos = queue.poll();
 			List<Edge> edges = adjacencyList.get(pos.from);
 			isVisit[pos.from] = true;
-//			System.out.println("edges : " + edges);
-//			System.out.println("pos : "+pos);
 			
 			for(Edge edge : edges)
 			{
@@ -152,7 +136,7 @@ public class D1127_N1753_ShortestPath
 
 	public static void main(String[] args)
 	{
-		new D1127_N1753_ShortestPath();
+		new D1127_N1110_SumCycle();
 	}
 
 	public class Edge implements Comparable<Edge>
