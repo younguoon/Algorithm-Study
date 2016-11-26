@@ -51,7 +51,7 @@ public class D1127_N1753_ShortestPath
 	public D1127_N1753_ShortestPath()
 	{
 		try
-		{ 
+		{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 			String[] temps = reader.readLine().split(" ");
@@ -87,15 +87,15 @@ public class D1127_N1753_ShortestPath
 				int weight = Integer.parseInt(temps[2]);
 //				System.out.println("weight : "+weight);
 				adjacencyList.get(from).add(new Edge(from, to, weight));
+//				System.out.println(adjacencyList.get(from).add(new Edge(from, to, weight)));
 //				System.out.println("adjacencyList"+adjacencyList);
 			}
 			reader.close();
-
+			
 			int[] result = dikstra(adjacencyList, k);
-//			System.out.println("result" + result);
 			for(int i = 0; i < v; i++)
 			{
-//				System.out.println(result[i]);
+//				System.out.println("result[i] : "+ result[i]);
 				if(result[i] != INFINITE)
 				{
 					System.out.println(result[i]);
@@ -122,11 +122,12 @@ public class D1127_N1753_ShortestPath
 		for(int i = 0; i < v; i++)
 		{
 			distance[i] = INFINITE;
+//			System.out.println("distance[" + i + "] = " + distance[i]);
 		}
 		distance[start] = 0;
 		
 		queue.offer(new Edge(start, -1, distance[start]));
-		
+//		System.out.println("queue.offer(new Edge(start, -1, distance[start])) : "+queue.offer(new Edge(start, -1, distance[start])));
 		while(!queue.isEmpty())
 		{
 			Edge pos = queue.poll();
@@ -137,12 +138,24 @@ public class D1127_N1753_ShortestPath
 			
 			for(Edge edge : edges)
 			{
+//				System.out.println("edges : "+edges);
 				if(!isVisit[edge.to])
 				{
+					System.out.println("----");
+					System.out.println("isVisit : "+isVisit);
+					System.out.println("isVisit[edge] : "+isVisit[edge.to]);
+					System.out.println("----");
 					if(distance[edge.to] > distance[pos.from] + edge.weight)
 					{
+						
+						System.out.println("before : "+distance[edge.to]+distance[pos.from]+edge.weight);
 						distance[edge.to] = distance[pos.from] + edge.weight;
+						System.out.println("after : "+distance[edge.to]);
 						queue.offer(new Edge(edge.to, -1, distance[edge.to]));
+						System.out.println("----");
+					}
+					else{
+						System.out.println("nothing");
 					}
 				}
 			}
@@ -171,6 +184,7 @@ public class D1127_N1753_ShortestPath
 		@Override
 		public int compareTo(Edge o)
 		{
+			System.out.println("o.weight : " + o.weight);
 			return weight - o.weight;
 		}
 	}
