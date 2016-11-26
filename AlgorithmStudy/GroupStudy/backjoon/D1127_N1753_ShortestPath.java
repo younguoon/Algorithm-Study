@@ -161,7 +161,7 @@ public class D1127_N1753_ShortestPath
 			}
 		}
 		return distance;
-	}
+	} 
 
 	public static void main(String[] args)
 	{
