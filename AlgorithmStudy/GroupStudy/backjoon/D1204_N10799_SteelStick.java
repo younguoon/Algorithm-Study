@@ -36,18 +36,38 @@
 
 
 */
+
 package backjoon;
 
+import java.util.Scanner;
+
 public class D1204_N10799_SteelStick {
+	public static void main(String[] args) {
 
+		int ironStick = 0;
+		int total = 0;
+
+		Scanner scan = new Scanner(System.in);
+		String test = scan.nextLine();
+
+		char[] testArray = test.toCharArray();
+		
+		for (int i = 0; i < testArray.length; i++) {
+			if (testArray[i] == '(') {
+				ironStick += 1;
+				System.out.println("1. : "+ironStick);
+			} else {
+				if (testArray[i - 1] == '(') {
+					ironStick -= 1;
+					System.out.println("2. : "+ironStick);
+					total += ironStick;
+					System.out.println("total : "+total);
+				} else {
+					total += 1;
+					ironStick -= 1;
+				}
+			}
+		}
+		System.out.println(total);
+	}
 }
-
-
-
-
-
-
-
-
-
-
