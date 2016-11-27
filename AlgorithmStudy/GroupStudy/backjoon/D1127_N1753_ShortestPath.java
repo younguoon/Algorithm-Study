@@ -41,11 +41,8 @@ import java.util.PriorityQueue;
 
 public class D1127_N1753_ShortestPath
 {
-	//한계
 	public static final int INFINITE = 3000000;
-	//경로가 존재하지 않는 경우
 	public static final String STR_INFINIT = "INF";
-
 	private int v, e, k;
 
 	public D1127_N1753_ShortestPath()
@@ -56,46 +53,29 @@ public class D1127_N1753_ShortestPath
 
 			String[] temps = reader.readLine().split(" ");
 			v = Integer.parseInt(temps[0]);
-//			System.out.println("v값 입력완료");
 			e = Integer.parseInt(temps[1]);
-//			System.out.println("e값 입력완료");
-			//왜 -1을 했을까??
 			k = Integer.parseInt(reader.readLine()) - 1;
-			
-//			System.out.println("k값까지 입력 완료");
-			
-//			System.out.println("for문 시작");
 			List<List<Edge>> adjacencyList = new ArrayList<>();
+			
 			for(int i = 0; i < v; i++)
 			{
-//				System.out.println("List<List<Edge>> for문으로 입력받음");
 				List<Edge> edges = new ArrayList<>();
 				adjacencyList.add(edges);
-//				System.out.println("adjacencyList : " + adjacencyList );
-//				System.out.println("edges : " + edges);
 			}
-//			System.out.println("for문 종료");
-			
 			
 			for(int i = 0; i < e; i++)
 			{
 				temps = reader.readLine().split(" ");
 				int from = Integer.parseInt(temps[0]) - 1;
-//				System.out.println("from : " + from);
 				int to = Integer.parseInt(temps[1]) - 1;
-//				System.out.println("to : "+to);
 				int weight = Integer.parseInt(temps[2]);
-//				System.out.println("weight : "+weight);
 				adjacencyList.get(from).add(new Edge(from, to, weight));
-//				System.out.println(adjacencyList.get(from).add(new Edge(from, to, weight)));
-//				System.out.println("adjacencyList"+adjacencyList);
 			}
 			reader.close();
-			
 			int[] result = dikstra(adjacencyList, k);
+
 			for(int i = 0; i < v; i++)
 			{
-//				System.out.println("result[i] : "+ result[i]);
 				if(result[i] != INFINITE)
 				{
 					System.out.println(result[i]);
@@ -116,52 +96,44 @@ public class D1127_N1753_ShortestPath
 	private int[] dikstra(List<List<Edge>> adjacencyList, int start)
 	{
 		PriorityQueue<Edge> queue = new PriorityQueue<>();
+		
+		//해당 엣지를 방문했는지 여부 체크
 		boolean[] isVisit = new boolean[v];
+		
+		//해당 노드까지의 최단 거리를 저장하는 배열
 		int[] distance = new int[v];
 
+		//거리 초기화
 		for(int i = 0; i < v; i++)
 		{
 			distance[i] = INFINITE;
-//			System.out.println("distance[" + i + "] = " + distance[i]);
 		}
 		distance[start] = 0;
 		
+		//offer메소드, PriorityQueue에 insert
 		queue.offer(new Edge(start, -1, distance[start]));
-//		System.out.println("queue.offer(new Edge(start, -1, distance[start])) : "+queue.offer(new Edge(start, -1, distance[start])));
+		
 		while(!queue.isEmpty())
 		{
+			//poll메소드,  head를 삭제하거나, queue가 비었으면 null을 리턴 
 			Edge pos = queue.poll();
 			List<Edge> edges = adjacencyList.get(pos.from);
 			isVisit[pos.from] = true;
-//			System.out.println("edges : " + edges);
-//			System.out.println("pos : "+pos);
 			
 			for(Edge edge : edges)
 			{
-//				System.out.println("edges : "+edges);
 				if(!isVisit[edge.to])
 				{
-					System.out.println("----");
-					System.out.println("isVisit : "+isVisit);
-					System.out.println("isVisit[edge] : "+isVisit[edge.to]);
-					System.out.println("----");
 					if(distance[edge.to] > distance[pos.from] + edge.weight)
 					{
-						
-						System.out.println("before : "+distance[edge.to]+distance[pos.from]+edge.weight);
 						distance[edge.to] = distance[pos.from] + edge.weight;
-						System.out.println("after : "+distance[edge.to]);
 						queue.offer(new Edge(edge.to, -1, distance[edge.to]));
-						System.out.println("----");
-					}
-					else{
-						System.out.println("nothing");
 					}
 				}
 			}
 		}
 		return distance;
-	} 
+	}
 
 	public static void main(String[] args)
 	{
@@ -184,7 +156,6 @@ public class D1127_N1753_ShortestPath
 		@Override
 		public int compareTo(Edge o)
 		{
-			System.out.println("o.weight : " + o.weight);
 			return weight - o.weight;
 		}
 	}

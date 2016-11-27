@@ -20,7 +20,6 @@ public class D1127_N1110_SumCycle {
 		if(N == 0) i++;
 		
 		while (N != M) {
-			
 			i++;
 			
 			if(i == 1){
