@@ -50,7 +50,7 @@ public class D1204_N10799_SteelStick {
 		Scanner scan = new Scanner(System.in);
 		String test = scan.nextLine();
  
-		char[] testArray = test.toCharArray();
+		char[] testArray = test.toCharArray(); 
 		
 		for (int i = 0; i < testArray.length; i++) {
 			if (testArray[i] == '(') {
