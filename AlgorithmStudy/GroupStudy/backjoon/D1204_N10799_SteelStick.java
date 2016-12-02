@@ -43,7 +43,7 @@ import java.util.Scanner;
 
 public class D1204_N10799_SteelStick {
 	public static void main(String[] args) {
-
+ 
 		int ironStick = 0;
 		int total = 0;
 
