@@ -16,7 +16,7 @@ public class D1204_N1931_ConferenceRoom {
          conf[i][0] = sc.nextInt();
          conf[i][1] = sc.nextInt();
       }
-
+ 
       //comparator 인터페이스 사용
       //자손클래스를 하나 만들어서 구현해 줘야 함.
       
