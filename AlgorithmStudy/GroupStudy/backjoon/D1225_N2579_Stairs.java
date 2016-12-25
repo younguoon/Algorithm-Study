@@ -1,6 +1,6 @@
 //https://www.acmicpc.net/problem/2579
 
-package backjoon;
+package backjoon; 
 
 import java.io.BufferedReader;
 import java.io.IOException;
