@@ -4,7 +4,7 @@ package backjoon;
 
 
 import java.util.Scanner;
-
+ 
 public class D1225_N2293_Coin {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

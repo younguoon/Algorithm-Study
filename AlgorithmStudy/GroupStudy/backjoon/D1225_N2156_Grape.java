@@ -1,7 +1,7 @@
 //https://www.acmicpc.net/problem/2156
 //가중치의 합의 최대
 
-package backjoon; 
+package backjoon;  
 
 import java.io.BufferedReader;
 import java.io.IOException;
