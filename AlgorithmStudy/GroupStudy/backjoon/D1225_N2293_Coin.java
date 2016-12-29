@@ -13,6 +13,7 @@ public class D1225_N2293_Coin {
 		int a[] = new int[n+1];
 		int d[] = new int[k+1];
 		
+		
 		for (int i = 1; i <= n; i++) {
 			a[i] = sc.nextInt();
 		}
