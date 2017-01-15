@@ -18,7 +18,7 @@ public class D0114_N11945_HotBread {
 	 for(i=0;i<N;i++){
 		 str=sc.nextLine();
 		 bread[i]=str.toCharArray();
-	 }
+	 } 
 	 
 	 for(i=0;i<N;i++){
 		 for(j=M-1;j>=0;j--){
